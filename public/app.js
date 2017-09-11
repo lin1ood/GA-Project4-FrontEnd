@@ -3,10 +3,13 @@
 
       this.message= "Hello from ANGULAR!"
       this.blogs = [];
-      // this.URL = 'http://localhost:3000';
-      this.URL = 'https://gizmo-blogger-backend.herokuapp.com';
+      this.URL = 'http://localhost:3000';
+      // this.URL = 'https://gizmo-blogger-backend.herokuapp.com';
       this.formData = {};
       const controller = this;
+
+      //read all the Blogs -- /blogs GET index
+      //anyone can do this!!!
       this.getBlogs = function (){
         $http({
           method: 'GET',
@@ -21,14 +24,14 @@
       }
 
       // Login User to get JWT Token for
-      // post - update - dlete
+      // post - update - delete
       this.login = function(userPass) {
         console.log('The userPass.username & userPass.password ' + userPass.username + ' : ' + userPass.password)
         this.userPass = userPass;
         $http({
             method: 'POST',
             url: this.URL + '/users/login',
-            data: { username: this.userPass.username, password: this.userPass.password },
+            data: { username: userPass.username, password: userPass.password },
           }).then(function(response) {
             console.log(response);
             this.user = response.data.user;
@@ -86,7 +89,7 @@
         console.log('this is my blog id', blog.id);
         $http({
           method: 'DELETE',
-          url: this.URL + '/blogs/blog.id',
+          url: this.URL + '/blogs/' + blog.id,
           headers: {
             Authorization: 'Bearer ' + JSON.parse(localStorage.getItem('token'))
           }
@@ -100,5 +103,24 @@
         );
         // this.controller.getBlogs();
       }
+
+      this.showBlogger = function (user_id) {
+          console.log("showBlogger clicked for user ", user_id);
+          $http({
+            method: 'GET',
+            url: this.URL + '/blogs/' + user_id,
+            headers: {
+              Authorization: 'Bearer ' + JSON.parse(localStorage.getItem('token'))
+            }
+          }).then(function(response){
+              console.log(response.data)
+              this.blogs = response.data;
+            }.bind(this), function(error) {
+                console.log(error);
+            });
+      };
+
+
+      // show the index of all the blogs on the initial page
       this.getBlogs();
     }]);
