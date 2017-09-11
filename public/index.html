@@ -17,6 +17,7 @@
       <nav>
         <div ng-repeat="blog in ctrl.blogs">
           <h3>{{ blog.author }}</h3>
+          <button ng-click="ctrl.deleteBlog(blog)">Delete this blog</button>
         </div>
       </nav>
       <aside>
@@ -26,6 +27,14 @@
           </h3>
         </div>
       </aside>
+    </div>
+    <h4>POST A BLOG</h4>
+      <form ng-submit="ctrl.processForm()">
+          <input type="text" ng-model="ctrl.formData.author"placeholder="author"/>
+          <input type="text" ng-model="ctrl.formData.subject" placeholder="subject"/>
+          <input type="text" ng-model="ctrl.formData.content" placeholder="content"/>
+          <input class="submit" type="submit"/>
+       </form>
     </div>
     <footer>…</footer>
 
