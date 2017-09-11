@@ -3,13 +3,14 @@
 
       this.message= "Hello from ANGULAR!"
       this.blogs = [];
-      this.herokuURL = 'https://gizmo-blogger-backend.herokuapp.com/blogs';
+      // this.URL = 'http://localhost:3000';
+      this.URL = 'https://gizmo-blogger-backend.herokuapp.com';
       this.formData = {};
       const controller = this;
       this.getBlogs = function (){
         $http({
           method: 'GET',
-          url: 'http://localhost:3000/blogs'
+          url: this.URL + '/blogs'
           // url: this.herokuURL
         }).then(function(result) {
             console.log('blogs from api: ', result);
@@ -26,7 +27,7 @@
         this.userPass = userPass;
         $http({
             method: 'POST',
-            url: this.url + '/users/login',
+            url: this.URL + '/users/login',
             data: { username: this.userPass.username, password: this.userPass.password },
           }).then(function(response) {
             console.log(response);
@@ -41,7 +42,7 @@
       //   console.log('/USERS called')
       //   $http({
       //     method: 'GET',
-      //     url: this.url + '/users',
+      //     url: this.URL + '/users',
       //     headers: {
       //       Authorization: 'Bearer ' + JSON.parse(localStorage.getItem('token'))
       //     }
@@ -69,7 +70,7 @@
         console.log('here is the form data: ', this.formData);
         $http({
           method: 'POST',
-          url: 'http://localhost:3000/blogs',
+          url: this.URL + '/blogs',
           data: this.formData,
           headers: {
             Authorization: 'Bearer ' + JSON.parse(localStorage.getItem('token'))
@@ -85,7 +86,7 @@
         console.log('this is my blog id', blog.id);
         $http({
           method: 'DELETE',
-          url: 'http://localhost:3000/blogs/' + blog,
+          url: this.URL + '/blogs/blog.id',
           headers: {
             Authorization: 'Bearer ' + JSON.parse(localStorage.getItem('token'))
           }
