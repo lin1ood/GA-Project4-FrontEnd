@@ -5,7 +5,7 @@
       this.blogs = [];
       this.herokuURL = 'https://gizmo-blogger-backend.herokuapp.com/blogs';
       this.formData = {};
-      this.controller = this;
+      const controller = this;
       this.getBlogs = function (){
         $http({
           method: 'GET',
@@ -38,14 +38,13 @@
           url: 'http://localhost:3000/blogs/' + blog.id
         }).then(
           function(response){
-
+            controller.getBlogs();
           },
-          function (error){
-            console.log(error);
+          function (){
           }
 
         );
-            this.controller.getBlogs();
+        // this.controller.getBlogs();
       }
       this.getBlogs();
     }]);
