@@ -5,7 +5,7 @@
       this.blogs = [];
       this.herokuURL = 'https://gizmo-blogger-backend.herokuapp.com/blogs';
       this.formData = {};
-
+      this.controller = this;
       this.getBlogs = function (){
         $http({
           method: 'GET',
@@ -32,17 +32,20 @@
         .catch(err=> console.log(err));
       }
       this.deleteBlog = function(blog){
+        console.log('this is my blog id', blog.id);
         $http({
           method: 'DELETE',
-          url: 'http://localhost:3000/blogs' + blog._id
+          url: 'http://localhost:3000/blogs/' + blog.id
         }).then(
           function(response){
-            conroller.getBlogs();
+
           },
           function (error){
             console.log(error);
           }
+
         );
+            this.controller.getBlogs();
       }
       this.getBlogs();
     }]);
