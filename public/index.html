@@ -14,8 +14,14 @@
       <form ng-submit="ctrl.login(userPass)">
         <input type="text" ng-model="userPass.username" placeholder="username"/>
         <input type="password" ng-model="userPass.password" placeholder="password"/>
-        <input type="submit"/>
+        <input type="submit" value="Login"/>
       </form>
+      <form ng-submit="ctrl.register(userPass)">
+        <input type="text" ng-model="userPass.username" placeholder="username"/>
+        <input type="password" ng-model="userPass.password" placeholder="password"/>
+        <input type="submit" value="Register"/>
+      </form>
+      <a ng-click="ctrl.logout()" href="#">Logout</a>
     </header>
     <div class="container">
       <main>
@@ -44,6 +50,5 @@
        </form>
     </div>
     <footer>…</footer>
-
   </body>
 </html>
