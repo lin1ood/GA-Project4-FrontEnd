@@ -8,6 +8,9 @@
       this.formData = {};
       const controller = this;
 
+      // localStorage.clear('token');
+
+
       //read all the Blogs -- /blogs GET index
       //anyone can do this!!!
       this.getBlogs = function (){
@@ -18,6 +21,7 @@
         }).then(function(result) {
             console.log('blogs from api: ', result);
             this.blogs = result.data;
+            // this.logout();
         }.bind(this), function(error) {
             console.log(error);
         });
@@ -31,6 +35,20 @@
         $http({
             method: 'POST',
             url: this.URL + '/users/login',
+            data: { username: userPass.username, password: userPass.password },
+          }).then(function(response) {
+            console.log(response);
+            this.user = response.data.user;
+            localStorage.setItem('token', JSON.stringify(response.data.token));
+          }.bind(this));
+      }
+
+      this.register = function(userPass) {
+        console.log('The userPass.username & userPass.password ' + userPass.username + ' : ' + userPass.password)
+        this.userPass = userPass;
+        $http({
+            method: 'POST',
+            url: this.URL + '/users',
             data: { username: userPass.username, password: userPass.password },
           }).then(function(response) {
             console.log(response);
@@ -78,11 +96,13 @@
           headers: {
             Authorization: 'Bearer ' + JSON.parse(localStorage.getItem('token'))
           }
-        }).then(response => {
+        }).then(function(response){
           console.log(response);
           this.blogs.unshift(response.data);
-        })
-        .catch(err=> console.log(err));
+        }.bind(this), function(error) {
+          console.log(error);
+      });
+
       }
 
       this.deleteBlog = function(blog){
