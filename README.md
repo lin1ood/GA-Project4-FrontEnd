@@ -29,3 +29,5 @@ https://github.com/lin1ood/GA-Project4-FrontEnd
 
 ## Heroku Deployment Link
 https://gizmo-blogger-frontend.herokuapp.com/
+
+## Wireframe
