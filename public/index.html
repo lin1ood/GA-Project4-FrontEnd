@@ -31,6 +31,14 @@
           <h3>{{ blog.author }}</h3>
           <button ng-click="ctrl.deleteBlog(blog)">Delete this blog</button>
           <button ng-click="ctrl.showBlogger(blog.user_id)">Show only this Authors Blogs</button>
+          <button ng-hide="ctrl.edit_form" ng-click="ctrl.edit_form = true">Edit my Blog</button>
+          <form ng-show="ctrl.edit_form" ng-submit="ctrl.editBlog(blog)">
+            <input type="text" ng-model="ctrl.editForm.author" placeholder='{{ blog.author }}'>
+            <input type="text" ng-model="ctrl.editForm.subject" placeholder="{{ blog.subject }}">
+            <input type="text" ng-model="ctrl.editForm.content" placeholder="{{ blog.content }}">
+            <input type="hidden" ng-model="ctrl.editForm.user_id" value="blog.user_id">
+            <input class="submit" type="submit"/>
+          </form>
         </div>
       </nav>
       <aside>
