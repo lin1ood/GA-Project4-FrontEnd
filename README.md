@@ -23,3 +23,9 @@
 * Create and add collaborators to GIT for this project.
 6. As a developer I want to have my Frontend setup as an Angular Project.
 * Use the Angular dev model for creating the the frontend application.
+
+## Git Repository
+https://github.com/lin1ood/GA-Project4-FrontEnd
+
+## Heroku Deployment Link
+https://gizmo-blogger-frontend.herokuapp.com/
