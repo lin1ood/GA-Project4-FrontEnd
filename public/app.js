@@ -3,8 +3,8 @@
 
       this.message= "Hello from ANGULAR!"
       this.blogs = [];
-      this.URL = 'http://localhost:3000';
-      // this.URL = 'https://gizmo-blogger-backend.herokuapp.com';
+      // this.URL = 'http://localhost:3000';
+      this.URL = 'https://gizmo-blogger-backend.herokuapp.com';
       this.formData = {};
       const controller = this;
       const edit_form = false;
