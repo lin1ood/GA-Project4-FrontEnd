@@ -7,6 +7,7 @@
       // this.URL = 'https://gizmo-blogger-backend.herokuapp.com';
       this.formData = {};
       const controller = this;
+      const edit_form = false;
 
       // localStorage.clear('token');
 
@@ -138,6 +139,36 @@
             }.bind(this), function(error) {
                 console.log(error);
             });
+      };
+
+      this.editBlog = function (blog) {
+        console.log('Edit Blog called!')
+        console.log('blog.id ', blog.id)
+        console.log('blog.author ', blog.author)
+        console.log('blog.subject ', blog.subject)
+        console.log('blog.content ', blog.content)
+        console.log('blog.user_id ', blog.user_id)
+
+        console.log('this.editForm.author ', this.editForm.author)
+        console.log('this.editForm.subject ', this.editForm.subject)
+        console.log('this.editForm.author ', this.editForm.content)
+
+        $http({
+          method: 'PUT',
+          url: this.URL + '/blogs/' + blog.id,
+          data: this.editForm,
+          headers: {
+            Authorization: 'Bearer ' + JSON.parse(localStorage.getItem('token'))
+          }
+        }).then(function(response){
+            console.log(response.data)
+            this.blogs = response.data;
+          }.bind(this), function(error) {
+              console.log(error);
+          });
+
+        // hide the form
+        controller.edit_form = false;
       };
 
 
