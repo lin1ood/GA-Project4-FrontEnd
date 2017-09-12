@@ -3,6 +3,7 @@
 
       this.message= "Hello from ANGULAR!"
       this.blogs = [];
+
       // this.URL = 'http://localhost:3000';
       this.URL = 'https://gizmo-blogger-backend.herokuapp.com';
       this.formData = {};
@@ -143,15 +144,15 @@
 
       this.editBlog = function (blog) {
         console.log('Edit Blog called!')
-        console.log('blog.id ', blog.id)
-        console.log('blog.author ', blog.author)
-        console.log('blog.subject ', blog.subject)
-        console.log('blog.content ', blog.content)
-        console.log('blog.user_id ', blog.user_id)
-
-        console.log('this.editForm.author ', this.editForm.author)
-        console.log('this.editForm.subject ', this.editForm.subject)
-        console.log('this.editForm.author ', this.editForm.content)
+        // console.log('blog.id ', blog.id)
+        // console.log('blog.author ', blog.author)
+        // console.log('blog.subject ', blog.subject)
+        // console.log('blog.content ', blog.content)
+        // console.log('blog.user_id ', blog.user_id)
+        //
+        // console.log('this.editForm.author ', this.editForm.author)
+        // console.log('this.editForm.subject ', this.editForm.subject)
+        // console.log('this.editForm.author ', this.editForm.content)
 
         $http({
           method: 'PUT',
@@ -162,8 +163,9 @@
           }
         }).then(function(response){
             console.log(response.data)
-            this.blogs = response.data;
-          }.bind(this), function(error) {
+            // this.blogs = response.data;
+            controller.getBlogs();
+          }, function(error) {
               console.log(error);
           });
 
