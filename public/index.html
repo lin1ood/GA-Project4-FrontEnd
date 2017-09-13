@@ -97,13 +97,7 @@
           <input type="text" ng-model="ctrl.formData.content" placeholder="content"/>
           <input class="submit" type="submit"/>
         </form>
-        <form ng-show="ctrl.edit_form" ng-submit="ctrl.editBlog(blog)">Edit a blog - this is only available when logged in
-          <input type="text" ng-model="ctrl.editForm.author" placeholder='{{ blog.author }}'>
-          <input type="text" ng-model="ctrl.editForm.subject" placeholder="{{ blog.subject }}">
-          <input type="text" ng-model="ctrl.editForm.content" placeholder="{{ blog.content }}">
-          <input type="hidden" ng-model="ctrl.editForm.user_id" value="blog.user_id">
-          <input class="submit" type="submit"/>
-        </form>
+
       </div>
       <div ng-repeat="blog in ctrl.blogs" class="bloginfo">
         <h3>**Blog Author** </br>{{ blog.author }}</h3>
@@ -119,6 +113,13 @@
         <button ng-click="ctrl.deleteBlog(blog)" class ="buttons">Delete this blog</button>
         <button ng-click="ctrl.showBlogger(blog.user_id)" id="showauthorsblogs">Show only this Authors Blogs</button>
         <button ng-hide="ctrl.edit_form" ng-click="ctrl.edit_form = true" class = "buttons">Edit my Blog</button>
+        <form ng-show="ctrl.edit_form" ng-submit="ctrl.editBlog(blog)">Edit a blog - this is only available when logged in
+          <input type="text" ng-model="ctrl.editForm.author" placeholder='{{ blog.author }}'>
+          <input type="text" ng-model="ctrl.editForm.subject" placeholder="{{ blog.subject }}">
+          <input type="text" ng-model="ctrl.editForm.content" placeholder="{{ blog.content }}">
+          <input type="hidden" ng-model="ctrl.editForm.user_id" value="blog.user_id">
+          <input class="submit" type="submit"/>
+        </form>
       </div>
 
     </div>
