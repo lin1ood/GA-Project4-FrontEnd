@@ -144,7 +144,7 @@
 
       this.editBlog = function (blog) {
         console.log('Edit Blog called!')
-        // console.log('blog.id ', blog.id)
+        console.log('blog.id ', blog.id)
         // console.log('blog.author ', blog.author)
         // console.log('blog.subject ', blog.subject)
         // console.log('blog.content ', blog.content)
