@@ -31,13 +31,13 @@
 
       // Login User to get JWT Token for
       // post - update - delete
-      this.login = function(userPass) {
-        console.log('The userPass.username & userPass.password ' + userPass.username + ' : ' + userPass.password)
-        this.userPass = userPass;
+      this.login = function(userLogin) {
+        console.log('The userLogin.username & userLogin.password ' + userLogin.username + ' : ' + userLogin.password)
+        this.userLogin = userLogin;
         $http({
             method: 'POST',
             url: this.URL + '/users/login',
-            data: { username: userPass.username, password: userPass.password },
+            data: { username: userLogin.username, password: userLogin.password },
           }).then(function(response) {
             console.log(response);
             this.user = response.data.user;
@@ -45,13 +45,13 @@
           }.bind(this));
       }
 
-      this.register = function(userPass) {
-        console.log('The userPass.username & userPass.password ' + userPass.username + ' : ' + userPass.password)
-        this.userPass = userPass;
+      this.register = function(userRegister) {
+        console.log('The userRegister.username & userRegister.password ' + userRegister.username + ' : ' + userRegister.password)
+        this.userRegister = userRegister;
         $http({
             method: 'POST',
             url: this.URL + '/users',
-            data: { username: userPass.username, password: userPass.password },
+            data: { username: userRegister.username, password: userRegister.password },
           }).then(function(response) {
             console.log(response);
             this.user = response.data.user;

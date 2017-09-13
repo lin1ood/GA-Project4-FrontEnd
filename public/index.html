@@ -77,14 +77,14 @@
     </div>
     <div class ="mainheader">
       <h1>Welcome to the gizmo class blog from General Assembly. Please share to your hearts content!</h1>
-      <form ng-submit="ctrl.login(userPass)">
-        <input type="text" ng-model="userPass.username" placeholder="username"/>
-        <input type="password" ng-model="userPass.password" placeholder="password"/>
+      <form ng-submit="ctrl.login(userLogin)">
+        <input type="text" ng-model="userLogin.username" placeholder="username"/>
+        <input type="password" ng-model="userLogin.password" placeholder="password"/>
         <input type="submit" value="Login"/>
       </form>
-      <form ng-submit="ctrl.register(userPass)">
-        <input type="text" ng-model="userPass.username" placeholder="username"/>
-        <input type="password" ng-model="userPass.password" placeholder="password"/>
+      <form ng-submit="ctrl.register(userRegister)">
+        <input type="text" ng-model="userRegister.username" placeholder="username"/>
+        <input type="password" ng-model="userRegister.password" placeholder="password"/>
         <input type="submit" value="Register"/>
       </form>
       <a ng-click="ctrl.logout()" href="#">Logout</a>
